@@ -343,7 +343,11 @@ int zmq::pgm_socket_t::init (bool udp_encapsulation_, const char *network_)
 
         //  Expedited Forwarding PHB for network elements, no ECN.
         //  Ignore return value due to varied runtime support.
-        const int dscp = 0x2e << 2;
+
+        // Use DSCP value from options struct as set by the user:
+//        const int dscp = 0x2e << 2;
+        const int dscp = options.tos;
+
         if (AF_INET6 != sa_family)
             pgm_setsockopt (sock, IPPROTO_PGM, PGM_TOS,
                &dscp, sizeof (dscp));
