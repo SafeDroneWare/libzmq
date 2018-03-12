@@ -823,7 +823,7 @@ else ()
     PUBLIC
       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
-      $<INSTALL_INTERFACE:include>
+      $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
   )
 endif ()
 
@@ -832,7 +832,7 @@ foreach (target ${target_outputs})
     PUBLIC
       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
-      $<INSTALL_INTERFACE:include>
+      $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
   )
 endforeach()
 
