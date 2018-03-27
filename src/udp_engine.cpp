@@ -101,6 +101,10 @@ void zmq::udp_engine_t::plug (io_thread_t* io_thread_, session_base_t *session_)
     io_object_t::plug (io_thread_);
     handle = add_fd (fd);
 
+    // Set the IP Type-Of-Service priority for this socket
+    if (options.tos != 0)
+        set_ip_type_of_service (fd, options.tos);
+
     // Bind the socket to a device if applicable
     if (!options.bound_device.empty ())
         bind_to_device (fd, options.bound_device);
